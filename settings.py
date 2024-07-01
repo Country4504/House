@@ -17,3 +17,5 @@ class Config:
 
     # 压制警告信息
     SQLALCHEMY_TRACK_MODIFICATIONS = True
+
+# 20 35
