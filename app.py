@@ -1,3 +1,4 @@
+# merge
 from flask import Flask
 from settings import Config, db
 from index_page import index_page
