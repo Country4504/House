@@ -10,20 +10,20 @@
 
     <title>光影天下</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link href="/static/vendor/bootstrap/css/%%URL0%%" rel="stylesheet">
     <link href="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.3/css/bootstrapValidator.min.css"
           rel="stylesheet">
 
 
-    <!-- Custom fonts for this template -->
-    <link href="/static/css/font-awesome.min.css" rel="stylesheet">
+    
+    <link href="/static/css/%%URL2%%" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <link href="/static/css/clean-blog.min.css" rel="stylesheet">
+    
+    <link href="/static/css/%%URL3%%" rel="stylesheet">
 
-    <!-- Custom page for this template -->
-    <link href="/static/css/zxf_page.css" rel="stylesheet">
+    
+    <link href="/static/css/zxf_%%URL4%%" rel="stylesheet">
     <style>
         .area-info {
             margin-left: 5px;
@@ -50,7 +50,7 @@
             color: #bdc3c7;
         }
 
-        /* login */
+        
         .m-header {
             padding: 10px 16px 2px;
         }
@@ -74,10 +74,10 @@
             border-radius: 2px;
         }
 
-        /* chanle */
+        
 
         .collection-line {
-            /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);*/
+            
             padding: 5px 0 25px;
             margin: 20px 0;
             background: #fff;
@@ -121,7 +121,7 @@
             letter-spacing: 0.2px;
         }
 
-        /* more */
+        
         .info-more {
             text-align: center;
         }
@@ -155,19 +155,19 @@
         }
 
         }
-        /* registe login*/
+        
         .register-login-line {
             margin: 0;
         }
 
-        /* page */
+        
         .my-page-line {
             padding: 5px 0 2px;
             margin: 10px 0 1px;
             background: #fff;
         }
 
-        /*hr*/
+        
         hr {
             margin: 2px;
         }
@@ -177,7 +177,7 @@
 
 <body>
 
-<!-- Navigation -->
+
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
         <a class="navbar-brand" href="/">光影天下</a>
@@ -197,12 +197,12 @@
 
                 <li class="nav-item" id="user">
                     {% if request.cookies.get('name') %}
-                        <!--处于登录状态-->
-                        <!--用户名、退出登录-->
+                        
+                        
                         <a id='u_name' class="nav-link"
-                           href="/user/{{ request.cookies.get('name') }}">{{ request.cookies.get('name') }}</a>
+                           href="/user/{{ %%URL6%%('name') }}">{{ request.cookies.get('name') }}</a>
                     {% else %}
-                        <!--没有处于登录装填下，才显示登录按钮-->
+                        
                         <a class="nav-link" data-toggle="modal" data-target="#login" href="">登录</a>
                     {% endif %}
                 </li>
@@ -218,8 +218,8 @@
     </div>
 </nav>
 
-<!-- Page Header -->
-<header class="masthead" style="background-image: url('/static/img/home-bg.jpg')">
+
+<header class="masthead" style="background-image: url('/static/img/%%URL9%%')">
     <div class="overlay"></div>
     <div class="container">
         <div class="row">
@@ -233,12 +233,12 @@
     </div>
 </header>
 
-<!-- Main Content -->
+
 <div class="container">
 
-    <!--当前城市-->
+    
     <div class="row info-line">
-        <!-- 模块1标题 -->
+        
         <div class="col-lg-12 tj-header">
             <h3>为你推荐</h3>
             <div class="describe">
@@ -246,7 +246,7 @@
                 <span class="float-right"><a href="" style="color: #17a2b8; padding-right: 5px"></a></span>
             </div>
         </div>
-        <!-- 模块1信息展示 -->
+        
         <div class="collection col-lg-12 col-md-12">
             <div id="fill-data" class="{{ page_num }}">
 
@@ -254,13 +254,13 @@
                     <div class="row collection-line">
 
                         <div class="col-lg-5 col-md-5 mx-auto">
-                            <div><a href="/house/{{ house.id }}"><img class='img-fluid img-box'
-                                                                      src="/static/img/house-bg1.jpg" alt=""></a></div>
+                            <div><a href="/house/{{ %%URL10%% }}"><img class='img-fluid img-box'
+                                                                      src="/static/img/%%URL11%%" alt=""></a></div>
                         </div>
                         <div class="col-lg-5 col-md-5 mx-auto">
                             <div class="collection-line-info">
                                 <div class="title">
-                                    <span><a href="/house/{{ house.id }}">{{ house.title | dealover }}</a></span>
+                                    <span><a href="/house/{{ %%URL12%% }}">{{ house.title | dealover }}</a></span>
                                 </div>
                                 <div>
                                     <span class="attribute-text">电影名称：</span>
@@ -300,7 +300,7 @@
                         <div class="col-lg-2 col-md-2 mx-auto">
                             <div class="info-more">
                                 <span class="info-text" style="color: #e74c3c">观看人数&nbsp{{ house.price }}</span>
-                                <span><a href="/house/{{ house.id }}"><i class="fa fa-arrow-right"
+                                <span><a href="/house/{{ %%URL21%% }}"><i class="fa fa-arrow-right"
                                                                          aria-hidden="true"></i></a></span>
                             </div>
                         </div>
@@ -317,17 +317,17 @@
             </div>
         </div>
 
-        <!-- 右边栏信息展示 -->
+        
         <div class="col-lg-2">
             <div class="row">
             </div>
         </div>
 
     </div>
-    <!--注册登录-->
+    
     <div class="row register-login-line">
         <div class="col-lg-8 col-md-10 mx-auto">
-            <!-- 注册窗口 -->
+            
             <div id="register" class="modal fade login_form" tabindex="-1">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -359,7 +359,7 @@
                                 <div class="form-group">
                                     <label for="" class="form-info">邮箱</label>
                                     <input class="form-control" name="email" type="email"
-                                           placeholder="例如:123@123.com">
+                                           placeholder="例如:123@%%URL22%%">
                                 </div>
                                 <div class="text-right">
                                     <button class="btn btn-primary" id='registe-btn'>提交</button>
@@ -372,7 +372,7 @@
                     </div>
                 </div>
             </div>
-            <!-- 登录窗口 -->
+            
             <div id="login" class="modal fade login_form">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -410,7 +410,7 @@
     </div>
 </div>
 <hr>
-<!-- Footer -->
+
 <footer>
     <div class="container">
         <div class="row">
@@ -423,35 +423,35 @@
     </div>
 </footer>
 
-<!-- Bootstrap core JavaScript -->
-<script src="/static/vendor/jquery/jquery.min.js"></script>
-<script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<script src="/static/vendor/jquery/%%URL23%%"></script>
+<script src="/static/vendor/bootstrap/js/%%URL24%%"></script>
 <script src="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>
-<script src="/static/js/login.js"></script>
-<script src="/static/js/zxf_page.js"></script>
+<script src="/static/js/%%URL26%%"></script>
+<script src="/static/js/zxf_%%URL27%%"></script>
 
 
-<!-- Custom scripts for this template -->
-<script src="/static/js/clean-blog.min.js"></script>
+
+<script src="/static/js/%%URL28%%"></script>
 
 <script>
     $(document).ready(function () {
         $(".zxf_pagediv").createPage({
-            pageNum: {{total_num}},  // 总的页码数
-            {#pageNum: 10,  // 总的页码数#}
-            current: Number($('#fill-data').attr('class')),  // 当前的页码
-            backfun: function (e) {  // 回调函数
-                console.log(e['current']);  // e['current] 是单击更多房源链接文本时候的页码
+            pageNum: {{total_num}},  
+            {#pageNum: 10,  
+            current: Number($('#fill-data').attr('class')),  
+            backfun: function (e) {  
+                console.log(e['current']);  
                 var n_current = e['current'];
-                // 获取当前页的地址
+                
                 var part_path = window.location.pathname;
                 var path_list = part_path.split('/');
-                // 将单击下一页的页码替换原来的页码
+                
                 path_list[3] = n_current;
-                // 获取重新拼接的新URL地址
+                
                 var n_url = path_list.join('/');
                 console.log(n_url);
-                // 重新加载
+                
                 window.location.replace(n_url);
             }
         });

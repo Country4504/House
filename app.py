@@ -10,7 +10,7 @@ app.config.from_object(Config)
 db.init_app(app)
 
 
-# 将蓝图注册到app中
+
 app.register_blueprint(index_page, url_prefix='/')
 app.register_blueprint(list_page, url_prefix='/')
 app.register_blueprint(detail_page, url_prefix='/')

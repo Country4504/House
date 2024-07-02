@@ -9,26 +9,26 @@
     <meta name="author" content="">
 
     <title>光影天下</title>
-    <!-- Icon -->
-    <link rel="icon" href="/static/img/favicon.ico" type="image/x-icon"/>
-    <link rel="shortcut icon" href="/static/img/favicon.ico" type="image/x-icon"/>
+    
+    <link rel="icon" href="/static/img/%%URL0%%" type="image/x-icon"/>
+    <link rel="shortcut icon" href="/static/img/%%URL1%%" type="image/x-icon"/>
 
-    <!-- Bootstrap core CSS -->
-    <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link href="/static/vendor/bootstrap/css/%%URL2%%" rel="stylesheet">
     <link href="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.3/css/bootstrapValidator.min.css"
           rel="stylesheet">
 
 
-    <!-- Custom fonts for this template -->
-    <link href="/static/css/font-awesome.min.css" rel="stylesheet">
+    
+    <link href="/static/css/%%URL4%%" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <link href="/static/css/clean-blog.min.css" rel="stylesheet">
+    
+    <link href="/static/css/%%URL5%%" rel="stylesheet">
 
     <style>
 
 
-        /*定位，数量*/
+        
         .area-info {
             margin-left: 5px;
             padding-left: 5px;
@@ -78,14 +78,14 @@
             color: #bdc3c7;
         }
 
-        /* login */
+        
         .m-header {
             padding: 10px 16px 2px;
         }
 
         .login_form {
             margin-top: 150px;
-            z-index：999;
+            z-index:999;
         }
 
         .form-info {
@@ -103,7 +103,7 @@
             border-radius: 2px;
         }
 
-        /* search */
+        
         .my-nav-tab {
             border-bottom: none;
         }
@@ -148,7 +148,7 @@
         }
 
         input::-webkit-input-placeholder {
-            /* placeholder字体大小  */
+            
             font-size: 14px;
             font-family: "Hiragino Sans GB", "Microsoft Yahei UI", "Microsoft Yahei", 微软雅黑, "Segoe UI", Tahoma, 宋体b8b体, SimSun, sans-serif;
 
@@ -185,7 +185,7 @@
 </head>
 
 <body>
-<!-- Navigation -->
+
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
         <a class="navbar-brand" href="/">光影天下</a>
@@ -205,12 +205,12 @@
 
                 <li class="nav-item" id="user">
                     {% if request.cookies.get('name') %}
-                    <!--处于登录状态-->
-                    <!--用户名、退出登录-->
-                    <a id='u_name' class="nav-link" href="/user/{{ request.cookies.get('name') }}">{{
+                    
+                    
+                    <a id='u_name' class="nav-link" href="/user/{{ %%URL9%%('name') }}">{{
                         request.cookies.get('name') }}</a>
                     {% else %}
-                    <!--没有处于登录装填下，才显示登录按钮-->
+                    
                     <a class="nav-link" data-toggle="modal" data-target="#login" href="">登录</a>
                     {% endif %}
                 </li>
@@ -226,8 +226,8 @@
     </div>
 </nav>
 
-<!-- Page Header -->
-<header class="masthead" style="background-image: url('/static/img/home-bg.jpg')">
+
+<header class="masthead" style="background-image: url('/static/img/%%URL12%%')">
     <div class="overlay"></div>
     <div class="container">
         <div class="row">
@@ -236,7 +236,7 @@
                     <h1>光影天下</h1>
                     <span class="subheading">每日推荐电影</span>
 
-                    <!--智能搜索功能-->
+                    
                     <div>
                         <ul class="nav nav-tabs my-nav-tab" style="margin:15px 0 0 0">
                             <li class="chanle1 active"><span>影名搜索</span></li>
@@ -264,9 +264,9 @@
     </div>
 </header>
 
-<!-- Main Content -->
+
 <div class="container">
-    <!--定位，数量-->
+    
     <div class="row">
         <div class="col-lg-12">
             <div class="area-info">
@@ -279,9 +279,9 @@
         </div>
     </div>
 
-    <!--当前城市-->
+    
     <div class="row info-line">
-        <!-- 模块1标题 -->
+        
         <div class="col-lg-12 tj-header">
             <h3>电影推荐</h3>
             <div class="describe">
@@ -290,11 +290,11 @@
                                              style="color: #3498db; padding-right: 5px">更多电影</a></span>
             </div>
         </div>
-        <!-- 模块1信息展示 -->
+        
         {% for house in house_new_list %}
         <div class="col-lg-4">
             <div class="course">
-                <div><a href="/house/{{ house.id }}"><img class='img-fluid img-box' src="/static/img/house-bg1.jpg"
+                <div><a href="/house/{{ %%URL13%% }}"><img class='img-fluid img-box' src="/static/img/%%URL14%%"
                                                           alt=""></a></div>
                 <div class="course-info">
                     <span>{{ house.address }}</span>
@@ -311,9 +311,9 @@
     </div>
     <hr>
 
-    <!--热点推荐-->
+    
     <div class="row info-line">
-        <!-- 模块2标题 -->
+        
         <div class="col-lg-12 tj-header">
             <h3>为您推荐</h3>
             <div class="describe">
@@ -322,11 +322,11 @@
                                              style="color: #3498db; padding-right: 5px">更多热门电影</a></span>
             </div>
         </div>
-        <!-- 模块2内容 -->
+        
         {% for house in house_hot_list %}
         <div class="col-lg-3">
             <div class="course">
-                <div><a href="/house/{{ house.id }}"><img class='img-fluid img-box' src="/static/img/house-bg1.jpg"
+                <div><a href="/house/{{ %%URL19%% }}"><img class='img-fluid img-box' src="/static/img/%%URL20%%"
                                                  alt=""></a></div>
                 <div class="course-info">
                     <span>{{ house.address }}</span>
@@ -344,10 +344,10 @@
     </div>
 
 
-    <!--注册登录-->
+    
     <div class="row info-line">
         <div class="col-lg-8 col-md-10 mx-auto">
-            <!-- 注册窗口 -->
+            
             <div id="register" class="modal fade login_form" tabindex="-1">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -376,7 +376,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="" class="form-info">邮箱</label>
-                                    <input class="form-control" name="email" type="email" placeholder="例如:123@123.com">
+                                    <input class="form-control" name="email" type="email" placeholder="例如:123@%%URL26%%">
                                 </div>
                                 <div class="text-right">
                                     <button class="btn btn-primary" id='registe-btn'>提交</button>
@@ -389,7 +389,7 @@
                     </div>
                 </div>
             </div>
-            <!-- 登录窗口 -->
+            
             <div id="login" class="modal fade login_form">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -429,7 +429,7 @@
     <hr>
 </div>
 
-<!-- Footer -->
+
 <footer>
     <div class="container">
         <div class="row">
@@ -442,74 +442,74 @@
     </div>
 </footer>
 
-<!-- Bootstrap core JavaScript -->
-<script src="/static/vendor/jquery/jquery.min.js"></script>
-<script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>
-<script src="/static/js/login.js"></script>
 
-<!-- Custom scripts for this template -->
-<script src="/static/js/clean-blog.min.js"></script>
+<script src="/static/vendor/jquery/%%URL27%%"></script>
+<script src="/static/vendor/bootstrap/js/%%URL28%%"></script>
+<script src="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>
+<script src="/static/js/%%URL30%%"></script>
+
+
+<script src="/static/js/%%URL31%%"></script>
 <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
-<script src="/static/js/echarts.min.js"></script>
+<script src="/static/js/%%URL33%%"></script>
 
 
 <script>
 
-    // 由户型搜索切换至地区搜索或者重复点击地区搜索
+    
     $(".chanle1").on('click', function () {
-        // 用于地区搜索重复点击的初始化
+        
         if ($('.chanle1').hasClass('active')) {
             $(".chanle1").removeClass('active');
             $("#txt").attr('name', '');
             $('#txt').attr('placeholder', '')
         }
-        // 移除户型搜索的样式
+        
         $(".chanle2").removeClass('active');
-        // 重新设置选中字段和<input>标签的属性
+        
         $(".chanle1").addClass('active');
         $("#txt").attr('name', 'addr');
         $('#txt').attr('placeholder', '请输入电影名或国家');
     });
 
-    // 由地区搜索切换至户型搜索或者重复点击户型搜索
+    
     $(".chanle2").on('click', function () {
-        // 用于户型搜索重复点击的初始化
+        
         if ($('.chanle2').hasClass('active')) {
             $(".chanle2").removeClass('active');
             $("#txt").attr('name', '');
             $('#txt').attr('placeholder', '')
         }
-        // 移除地区搜索的样式
+        
         $(".chanle1").removeClass('active');
-        // 重新设置选中字段和<input>标签的属性
+        
         $(".chanle2").addClass('active');
         $("#txt").attr('name', 'rooms');
         $('#txt').attr('placeholder', '请输入电影年份');
     });
 
 
-    // 输入框的书写逻辑
-    var oTxt = document.getElementById('txt');  // 输入框
-    var oBtn = document.getElementById('btn');  // 提交按钮
-    var oList = document.getElementById('list');// 提示列表
+    
+    var oTxt = document.getElementById('txt');  
+    var oBtn = document.getElementById('btn');  
+    var oList = document.getElementById('list');
 
-    // 设置锁，true表示锁住输入框，false表示解锁输入框
+    
     var cpLock = false;
 
-    // 中文搜索，监听compositionstart事件，如果触发该事件，就锁住输入框
+    
     $('#txt').on('compositionstart', function () {
         cpLock = true;
     });
 
-    // 中文搜索，监听compositionend事件，如果触发该事件，就解锁输入框
+    
     $('#txt').on('compositionend', function () {
         cpLock = false;
         var keyWord = oTxt.value;
         var resultList = searchByIndexOf(keyWord);
     });
 
-    // 英文搜索，监听input事件，用于处理字母搜索
+    
     $('#txt').on('input', function () {
         if (!cpLock) {
             var keyWord = oTxt.value;
@@ -518,7 +518,7 @@
     });
 
 
-    // 搜索关键字
+    
     function searchByIndexOf(keyWord) {
 
         $(".my-nav-tab li").each(function (index, element) {
@@ -531,12 +531,12 @@
                     type: 'post',
                     dataType: 'json',
                     data: data,
-                    success: function (data) {  // {code=0, info=[]}
+                    success: function (data) {  
                         if (data['code'] == 0) {
                             warning_str = '未找到关于' + keyWord + '的房屋信息！';
                             alert(warning_str)
                         }
-                        if (data['code'] == 1) {  // {code=1, info=[{t_name='字段的名字 例如：东城-xxx-xxxx'， num=108},{},{}]}
+                        if (data['code'] == 1) {  
                             list = data['info'];
                             console.log('search', list);
 
@@ -561,26 +561,26 @@
         });
     }
 
-    // 点击提交按钮进行查询
-    // oBtn.addEventListener('click', function () {
-    //     var keyWord = oTxt.value;
-    //     var resultList = searchByIndexOf(keyWord);
-    //     console.log(resultList);
-    //
-    // }, false);
-    //
-    // // 回车查询
-    // oTxt.addEventListener('keydown', function (e) {
-    //     if (e.keyCode == 13) {
-    //         var keyWord = oTxt.value;
-    //         var resultList = searchByIndexOf(keyWord);
-    //     }
-    // }, false);
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
-    // 单击检索项将其填入搜索框
+    
     function info_to_txt() {
         $('.li_style').on('click', function () {
-            // 实现了重复点击的初始化
+            
             if ($(this).hasClass('active')) {
                 $(this).removeClass('active');
             }

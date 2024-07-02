@@ -2,7 +2,7 @@ from flask import Blueprint, request, render_template, url_for, redirect
 from models import House
 import math
 
-# 创建蓝图对象
+
 list_page = Blueprint('list_page', __name__)
 
 """
@@ -21,7 +21,7 @@ def search_txt_info(page):
     rooms_info = request.args.get('rooms')
 
     if addr:
-        house_num = House.query.filter(House.address.like(f'%{addr}%')).count()  # 模糊查询
+        house_num = House.query.filter(House.address.like(f'%{addr}%')).count()  
         total_num = math.ceil(house_num / 10)
         result = House.query.filter(House.address.like(f'%{addr}%')).order_by(House.publish_time.desc()).paginate(page=page, per_page=10)
         return render_template('search_list.html', house_list=result.items, page_num=result.page, total_num=total_num, addr=addr)
@@ -35,7 +35,7 @@ def search_txt_info(page):
     return redirect(url_for('index_page.index'))
 
 
-# 最新房源列表页展示的功能
+
 """
 1. 去定义一个视图函数 /list/pattern/<int:page>  method=get
 2. 获取全部的房源数据，再根据房源的发布时间 publish_time 字段进行降序排序
@@ -45,20 +45,20 @@ def search_txt_info(page):
 
 @list_page.route('/list/pattern/<int:page>')
 def return_new_list(page):
-    # 获取房源总数量
+    
     house_num = House.query.count()
-    # 计算总的页码数，向上取整
+    
     total_num = math.ceil(house_num / 10)
     result = House.query.order_by(House.publish_time.desc()).paginate(page=page, per_page=10)
     return render_template('list.html', house_list=result.items, page_num=result.page, total_num=total_num)
 
 
-# 最热房源列表页展示的功能
+
 @list_page.route('/list/hot_house/<int:page>')
 def return_hot_list(page):
-    # 获取房源总数量
+    
     house_num = House.query.count()
-    # 计算总的页码数，向上取整
+    
     total_num = math.ceil(house_num / 10)
     result = House.query.order_by(
         House.page_views.desc()).paginate(page=page, per_page=10)
@@ -67,13 +67,13 @@ def return_hot_list(page):
 
 def deal_title_over(word):
     if len(word) > 15:
-        return word[:15] + '...'  # 当房源标题长度大于15时，用省略号替换
+        return word[:15] + '...'  
     else:
         return word
 
 
 def deal_direction(word):
-    if len(word) == 0 or word is None:  # 房源朝向、交通条件为空时显示暂无信息
+    if len(word) == 0 or word is None:  
         return '暂无信息！'
     else:
         return word

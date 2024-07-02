@@ -10,20 +10,20 @@
 
     <title>光影天下</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link href="/static/vendor/bootstrap/css/%%URL0%%" rel="stylesheet">
     <link href="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.3/css/bootstrapValidator.min.css"
           rel="stylesheet">
 
 
-    <!-- Custom fonts for this template -->
-    <link href="/static/css/font-awesome.min.css" rel="stylesheet">
+    
+    <link href="/static/css/%%URL2%%" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <link href="/static/css/clean-blog.min.css" rel="stylesheet">
+    
+    <link href="/static/css/%%URL3%%" rel="stylesheet">
 
-    <!-- Custom page for this template -->
-    <link href="/static/css/zxf_page.css" rel="stylesheet">
+    
+    <link href="/static/css/zxf_%%URL4%%" rel="stylesheet">
     <style>
         .area-info {
             margin-left: 5px;
@@ -50,7 +50,7 @@
             color: #bdc3c7;
         }
 
-        /* login */
+        
         .m-header {
             padding: 10px 16px 2px;
         }
@@ -74,10 +74,10 @@
             border-radius: 2px;
         }
 
-        /* chanle */
+        
 
         .collection-line {
-            /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);*/
+            
             padding: 5px 0 25px;
             margin: 20px 0;
             background: #fff;
@@ -121,7 +121,7 @@
             letter-spacing: 0.2px;
         }
 
-        /* more */
+        
         .info-more {
             text-align: center;
         }
@@ -155,19 +155,19 @@
         }
 
         }
-        /* registe login*/
+        
         .register-login-line {
             margin: 0;
         }
 
-        /* page */
+        
         .my-page-line {
             padding: 5px 0 2px;
             margin: 10px 0 1px;
             background: #fff;
         }
 
-        /*hr*/
+        
         hr {
             margin: 2px;
         }
@@ -177,7 +177,7 @@
 
 <body>
 
-<!-- Navigation -->
+
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
         <a class="navbar-brand" href="/">光影天下</a>
@@ -196,12 +196,12 @@
                 </li>
                 <li class="nav-item" id="user">
                     {% if request.cookies.get('name') %}
-                        <!--处于登录状态-->
-                        <!--用户名、退出登录-->
+                        
+                        
                         <a id='u_name' class="nav-link"
-                           href="/user/{{ request.cookies.get('name') }}">{{ request.cookies.get('name') }}</a>
+                           href="/user/{{ %%URL6%%('name') }}">{{ request.cookies.get('name') }}</a>
                     {% else %}
-                        <!--没有处于登录装填下，才显示登录按钮-->
+                        
                         <a class="nav-link" data-toggle="modal" data-target="#login" href="">登录</a>
                     {% endif %}
                 </li>
@@ -216,8 +216,8 @@
     </div>
 </nav>
 
-<!-- Page Header -->
-<header class="masthead" style="background-image: url('/static/img/home-bg.jpg')">
+
+<header class="masthead" style="background-image: url('/static/img/%%URL9%%')">
     <div class="overlay"></div>
     <div class="container">
         <div class="row">
@@ -231,12 +231,12 @@
     </div>
 </header>
 
-<!-- Main Content -->
+
 <div class="container">
 
-    <!--当前城市-->
+    
     <div class="row info-line">
-        <!-- 模块1标题 -->
+        
         <div class="col-lg-12 tj-header">
             <h3>为你推荐</h3>
             <div class="describe">
@@ -244,7 +244,7 @@
                 <span class="float-right"><a href="#" style="color: #17a2b8; padding-right: 5px"></a></span>
             </div>
         </div>
-        <!-- 模块1信息展示 -->
+        
         <div class="collection col-lg-10">
             <div id="fill-data" class="1">
 
@@ -252,14 +252,14 @@
                     <div class="row collection-line">
 
                         <div class="col-lg-5 col-md-5 mx-auto">
-                            <div><a href="/house/{{ house.id }}"><img class='img-fluid img-box'
-                                                                      src="/static/img/house-bg1.jpg"
+                            <div><a href="/house/{{ %%URL10%% }}"><img class='img-fluid img-box'
+                                                                      src="/static/img/%%URL11%%"
                                                                       alt=""></a></div>
                         </div>
                         <div class="col-lg-5 col-md-5 mx-auto">
                             <div class="collection-line-info">
                                 <div class="title">
-                                    <span><a href="/house/{{ house.id }}">{{ house.title | dealover }}</a></span>
+                                    <span><a href="/house/{{ %%URL12%% }}">{{ house.title | dealover }}</a></span>
                                 </div>
                                 <div>
                                     <span class="attribute-text">电影名称：</span>
@@ -298,7 +298,7 @@
                         <div class="col-lg-2 col-md-2 mx-auto">
                             <div class="info-more">
                                 <span class="info-text" style="color: #e74c3c">观看人数：&nbsp{{ house.price }}人</span>
-                                <span><a href="/house/{{ house.id }}"><i class="fa fa-arrow-right"
+                                <span><a href="/house/{{ %%URL21%% }}"><i class="fa fa-arrow-right"
                                                                          aria-hidden="true"></i></a></span>
                             </div>
                         </div>
@@ -316,7 +316,7 @@
             </div>
         </div>
 
-        <!-- 右边栏信息展示 -->
+        
         <div class="col-lg-3">
             <div class="row">
             </div>
@@ -359,14 +359,14 @@
             addhtml:function(obj,pageinit){
                 return (function(){
                     obj.empty();
-                    /*上一页*/
+                    
                     if (pageinit.current > 1) {
                         obj.append('<a href="javascript:;" class="prebtn">上一页</a>');
                     } else{
                         obj.remove('.prevPage');
                         obj.append('<span class="disabled">上一页</span>');
                     }
-                    /*中间页*/
+                    
                     if (pageinit.current >4 && pageinit.pageNum > 4) {
                         obj.append('<a href="javascript:;" class="zxfPagenum">'+1+'</a>');
                         obj.append('<a href="javascript:;" class="zxfPagenum">'+2+'</a>');
@@ -393,14 +393,14 @@
                     if (end < pageinit.pageNum) {
                         obj.append('<span>...</span>');
                     }
-                    /*下一页*/
+                    
                     if (pageinit.current >= pageinit.pageNum) {
                         obj.remove('.nextbtn');
                         obj.append('<span class="disabled">下一页</span>');
                     } else{
                         obj.append('<a href="javascript:;" class="nextbtn">下一页</a>');
                     }
-                    /*尾部*/
+                    
                     obj.append('<span>'+'共'+'<b>'+pageinit.pageNum+'</b>'+'页，'+'</span>');
                     obj.append('<span>'+'到第'+'<input type="number" class="zxfinput" value=""/>'+'页'+'</span>');
                     obj.append('<span class="zxfokbtn">'+'确定'+'</span>');
@@ -408,15 +408,15 @@
             },
             bindEvent:function(obj,pageinit){
                 return (function(){
-                    obj.on("click","a.prebtn",function(){
-                        var cur = parseInt(obj.children("span.current").text());
+                    obj.on("click","%%URL66%%n",function(){
+                        var cur = parseInt(obj.children("%%URL68%%nt").text());
                         var current = $.extend(pageinit, {"current":cur-1});
                         zp.addhtml(obj,current);
                         if (typeof(pageinit.backfun)=="function") {
                             pageinit.backfun(current);
                         }
                     });
-                    obj.on("click","a.zxfPagenum",function(){
+                    obj.on("click","%%URL73%%Pagenum",function(){
                         var cur = parseInt($(this).text());
                         var current = $.extend(pageinit, {"current":cur});
                         zp.addhtml(obj,current);
@@ -424,16 +424,16 @@
                             pageinit.backfun(current);
                         }
                     });
-                    obj.on("click","a.nextbtn",function(){
-                        var cur = parseInt(obj.children("span.current").text());
+                    obj.on("click","%%URL78%%tn",function(){
+                        var cur = parseInt(obj.children("%%URL80%%nt").text());
                         var current = $.extend(pageinit, {"current":cur+1});
                         zp.addhtml(obj,current);
                         if (typeof(pageinit.backfun)=="function") {
                             pageinit.backfun(current);
                         }
                     });
-                    obj.on("click","span.zxfokbtn",function(){
-                        var cur = parseInt($("input.zxfinput").val());
+                    obj.on("click","%%URL85%%btn",function(){
+                        var cur = parseInt($("%%URL86%%put").val());
                         var current = $.extend(pageinit, {"current":cur});
                         zp.addhtml(obj,{"current":cur,"pageNum":pageinit.pageNum});
                         if (typeof(pageinit.backfun)=="function") {
@@ -454,10 +454,10 @@
     }(jQuery));
     </script>
     </div>
-    <!--注册登录-->
+    
     <div class="row register-login-line">
         <div class="col-lg-8 col-md-10 mx-auto">
-            <!-- 注册窗口 -->
+            
             <div id="register" class="modal fade login_form" tabindex="-1">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -489,7 +489,7 @@
                                 <div class="form-group">
                                     <label for="" class="form-info">邮箱</label>
                                     <input class="form-control" name="email" type="email"
-                                           placeholder="例如:123@123.com">
+                                           placeholder="例如:123@%%URL93%%">
                                 </div>
                                 <div class="text-right">
                                     <button class="btn btn-primary" id='registe-btn'>提交</button>
@@ -502,7 +502,7 @@
                     </div>
                 </div>
             </div>
-            <!-- 登录窗口 -->
+            
             <div id="login" class="modal fade login_form">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -540,29 +540,33 @@
     </div>
 </div>
 <hr>
-<!-- Footer -->
+
 <footer>
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">
 
 
+<<<<<<< HEAD
                 <p class="copyright text-muted">Copyright &copy; 光影天下 2024</p>
+=======
+                <p class="copyright text-muted">Copyright &copy; 二手好房 2019</p>
+>>>>>>> 8ffb9aa71089cbae46835a6dd02105f4c9173ca6
             </div>
         </div>
     </div>
 </footer>
 
-<!-- Bootstrap core JavaScript -->
-<script src="/static/vendor/jquery/jquery.min.js"></script>
-<script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<script src="/static/vendor/jquery/%%URL94%%"></script>
+<script src="/static/vendor/bootstrap/js/%%URL95%%"></script>
 <script src="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>
-<script src="/static/js/login.js"></script>
-<script src="/static/js/zxf_page.js"></script>
+<script src="/static/js/%%URL97%%"></script>
+<script src="/static/js/zxf_%%URL98%%"></script>
 
 
-<!-- Custom scripts for this template -->
-<script src="/static/js/clean-blog.min.js"></script>
+
+<script src="/static/js/%%URL99%%"></script>
 
 
 

@@ -10,20 +10,19 @@
 
     <title>光影天下</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link href="/static/vendor/bootstrap/css/%%URL0%%" rel="stylesheet">
 
-    <!-- Custom fonts for this template -->
-    <link href="/static/css/font-awesome.min.css" rel="stylesheet">
+    
+    <link href="/static/css/%%URL1%%" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <link href="/static/css/clean-blog.min.css" rel="stylesheet">
+    
+    <link href="/static/css/%%URL2%%" rel="stylesheet">
 
 
     <style>
 
-        <!--
-        -->
+        
         #mainNav {
             border-bottom: 1px solid #ecf0f1;
             background: transparent;
@@ -67,7 +66,7 @@
             opacity: 0.5;
         }
 
-        /**/
+        
         .no-margin-bottom {
             margin-bottom: 0 !important;
         }
@@ -101,7 +100,7 @@
             line-height: 30px;
         }
 
-        /* editor button */
+        
         .c-2 {
             margin: 0 0 12px 0;
             border-radius: 1px;
@@ -143,7 +142,7 @@
             font-size: 14px;
         }
 
-        /* change-chanle */
+        
         .nav-tabs > li > a {
             position: relative;
             display: block;
@@ -165,7 +164,7 @@
             text-decoration: none
         }
 
-        /* chanle */
+        
         .collection {
             display: none;
             overflow: scroll;
@@ -202,7 +201,7 @@
             letter-spacing: 0.2px;
         }
 
-        /* more */
+        
         .info-more {
             text-align: center;
         }
@@ -237,10 +236,10 @@
 
         }
 
-        /* browse-record */
+        
         .browse-record {
             padding-bottom: 15px;
-            /*box-shadow: -5px 0 10px -2px rgba(236, 236, 236, 0.86);*/
+            
         }
 
         .browse-record-first-div {
@@ -304,7 +303,7 @@
 
 <body>
 
-<!-- Navigation -->
+
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
         <a class="navbar-brand" href="/">光影天下</a>
@@ -325,12 +324,12 @@
 
                 <li class="nav-item" id="user">
                     {% if request.cookies.get('name') %}
-                    <!--处于登录状态-->
-                    <!--用户名、退出登录-->
-                    <a id='u_name' class="nav-link" href="/user/{{ request.cookies.get('name') }}">{{
+                    
+                    
+                    <a id='u_name' class="nav-link" href="/user/{{ %%URL9%%('name') }}">{{
                         request.cookies.get('name') }}</a>
                     {% else %}
-                    <!--没有处于登录装填下，才显示登录按钮-->
+                    
                     <a class="nav-link" data-toggle="modal" data-target="#login" href="">登录</a>
                     {% endif %}
                 </li>
@@ -347,7 +346,7 @@
     </div>
 </nav>
 
-<!-- Page Header -->
+
 <header class="masthead no-margin-bottom" style="background-color: #fff; min-height: 500px">
     <div class="overlay"></div>
     <div class="container">
@@ -358,7 +357,7 @@
                     <li class="chanle2"><a href="#collections">电影收藏</a></li>
                 </ul>
                 <div class="user-info">
-                    <input value="{{ user.name }}" id="n-data" style="display: none">
+                    <input value="{{ %%URL12%% }}" id="n-data" style="display: none">
                     <div class="row">
                         <div class="col-lg-8 c-1">
                             <span>昵称：</span>
@@ -371,7 +370,7 @@
                         </div>
                     </div>
 
-                    <input value="{{ user.addr }}" id="a-data" style="display: none">
+                    <input value="{{ %%URL14%% }}" id="a-data" style="display: none">
                     <div class="row">
                         <div class="col-lg-8 c-1">
                             <span>住址：</span>
@@ -384,7 +383,7 @@
                         </div>
                     </div>
 
-                    <input value="{{ user.password }}" id="p-data" style="display: none">
+                    <input value="{{ %%URL16%%ord }}" id="p-data" style="display: none">
                     <div class="row">
                         <div class="col-lg-8 c-1">
                             <span>密码：</span>
@@ -397,7 +396,7 @@
                         </div>
                     </div>
 
-                    <input value="{{ user.email }}" id="e-data" style="display: none">
+                    <input value="{{ %%URL18%% }}" id="e-data" style="display: none">
                     <div class="row">
                         <div class="col-lg-8 c-1">
                             <span>邮箱：</span>
@@ -410,16 +409,16 @@
                         </div>
                     </div>
                 </div>
-                <!--收藏-->
+                
                 <div class="collection">
 
                     {% for house in collect_house_list%}
                     <div class="row collection-line" id="collect">
-                        <span class="collect_off" id="{{ house.id }}">取消收藏</span>
+                        <span class="collect_off" id="{{ %%URL20%% }}">取消收藏</span>
                         <div class="col-lg-4 col-md-4 mx-auto">
                             <div>
-                                <a href="/house/{{ house.id }}">
-                                    <img class='img-fluid img-box' src="/static/img/house-bg1.jpg" alt="">
+                                <a href="/house/{{ %%URL21%% }}">
+                                    <img class='img-fluid img-box' src="/static/img/%%URL22%%" alt="">
                                 </a>
                             </div>
                         </div>
@@ -456,7 +455,7 @@
                         <div class="col-lg-2 col-md-2 mx-auto" style="height: 100px; margin-top: 40px;">
                             <div class="info-more"
                                  style="width: 100%; height: 100%; position: relative; overflow: hidden;">
-                                <span><a href="/house/{{ house.id }}"
+                                <span><a href="/house/{{ %%URL28%% }}"
                                          style="position: absolute; top:-30px; left: -1px; height: 20px;"><i
                                         class="fa fa-arrow-right"
                                         aria-hidden="true"></i></a></span>
@@ -469,7 +468,7 @@
             </div>
 
 
-            <!--浏览记录-->
+            
             <div class="col-lg-4 col-md-4 mx-auto detail-body">
                 <div class="row browse-record">
                     <div class="col-lg-10 col-md-10 mx-auto">
@@ -485,8 +484,8 @@
                         {% for house in seen_house_list %}
                         <div class="col-lg-10 col-md-10 mx-auto browse-record-first-div">
                             <div class="course">
-                                <div><a href="/house/{{ house.id }}"><img class='img-fluid img-box'
-                                                                          src="/static/img/house-bg1.jpg" alt=""></a>
+                                <div><a href="/house/{{ %%URL29%% }}"><img class='img-fluid img-box'
+                                                                          src="/static/img/%%URL30%%" alt=""></a>
                                 </div>
                                 <div class="course-info">
                                     <span class="glyphicon glyphicon-map-marker"></span>
@@ -509,7 +508,7 @@
 
 </header>
 
-<!-- Footer -->
+
 <footer>
     <div class="container">
         <div class="row">
@@ -520,19 +519,19 @@
     </div>
 </footer>
 
-<!-- Bootstrap core JavaScript -->
 
-<script src="/static/vendor/jquery/jquery.min.js"></script>
-<script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-<!-- Custom scripts for this template -->
-<script src="/static/js/clean-blog.min.js"></script>
-<script src="/static/vendor/jquery/jquery.cookie.js"></script>
+<script src="/static/vendor/jquery/%%URL35%%"></script>
+<script src="/static/vendor/bootstrap/js/%%URL36%%"></script>
 
-<!-- change chanle -->
+
+<script src="/static/js/%%URL37%%"></script>
+<script src="/static/vendor/jquery/%%URL38%%"></script>
+
+
 <script>
 
-    // 删除浏览记录
+    
     $("#del").on('click', function () {
         var $user_name = $.cookie('name');
         var $span = $(this);
@@ -557,7 +556,7 @@
         }
     });
 
-    //  取消收藏
+    
     $(".collect_off").on('click', function () {
 
         var hid = this.id;
@@ -587,7 +586,7 @@
     });
 
 
-    // 登出功能
+    
     $("#logout").on('click', function () {
         $.ajax({
             url: '/logout',
@@ -620,11 +619,11 @@
         $(".chanle2").addClass('action')
     });
 
-    // 修改用户名称的
+    
 
-    // 标志位
+    
     var name_option = 1;
-    // 获取原来的名字
+    
     var y_name = $('#n-data').val();
     $("#btn-name").on('click', function () {
         if (name_option == 1) {
