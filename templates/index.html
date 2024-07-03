@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
+    <meta name="referrer" content="no-referrer" />
     <title>光影天下</title>
     <!-- Icon -->
     <link rel="icon" href="/static/img/favicon.ico" type="image/x-icon"/>
@@ -294,7 +294,7 @@
         {% for house in house_new_list %}
         <div class="col-lg-4">
             <div class="course">
-                <div><a href="/house/{{ house.id }}"><img class='img-fluid img-box' src="/static/img/house-bg1.jpg"
+                <div><a href="/house/{{ house.id }}"><img class='img-fluid img-box' src="https://images.weserv.nl/?url={{ house.image_url }}"
                                                           alt=""></a></div>
                 <div class="course-info">
                     <span>{{ house.address }}</span>
@@ -326,7 +326,7 @@
         {% for house in house_hot_list %}
         <div class="col-lg-3">
             <div class="course">
-                <div><a href="/house/{{ house.id }}"><img class='img-fluid img-box' src="/static/img/house-bg1.jpg"
+                <div><a href="/house/{{ house.id }}"><img class='img-fluid img-box' src="https://images.weserv.nl/?url={{ house.image_url }}"
                                                  alt=""></a></div>
                 <div class="course-info">
                     <span>{{ house.address }}</span>

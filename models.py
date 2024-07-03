@@ -46,6 +46,8 @@ class House(db.Model):
     # 房源编号
     house_num = db.Column(db.String(255))
 
+    image_url = db.Column(db.String(255))  # 新增字段
+
     # 重写__repr__方法，方便查看对象的输出内容
     def __repr__(self):
         return 'House: %s, %s' % (self.address, self.id)
