@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="referrer" content="no-referrer" />
-    
+
     <title>光影天下</title>
 
     <!-- Bootstrap core CSS -->
@@ -220,7 +220,7 @@
 </nav>
 
 <!-- Page Header -->
-<header class="masthead" style="background-image: url('/static/img/home-bg.jpg')">
+<header class="masthead" style="background-image: url('/static/img/house-bg1.jpg')">
     <div class="overlay"></div>
     <div class="container">
         <div class="row">
@@ -256,7 +256,9 @@
 
                         <div class="col-lg-5 col-md-5 mx-auto">
                             <div><a href="/house/{{ house.id }}"><img class='img-fluid img-box'
-                                                                      src="https://images.weserv.nl/?url={{ house.image_url }}" alt=""></a></div>
+                                src="https://images.weserv.nl/?url={{ house.image_url | urlencode }}"
+                                alt="{{ house.address }}"
+                                onerror="this.onerror=null; this.src='/static/img/house-bg1.jpg';"></a></div>
                         </div>
                         <div class="col-lg-5 col-md-5 mx-auto">
                             <div class="collection-line-info">

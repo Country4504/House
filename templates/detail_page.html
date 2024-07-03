@@ -20,7 +20,6 @@
     <link href="/static/css/clean-blog.min.css" rel="stylesheet">
 
     <style>
-
         #mainNav {
             border-bottom: 1px solid #ecf0f1;
             background: transparent;
@@ -31,16 +30,18 @@
             color: #343a40;
         }
 
-        #mainNav .navbar-brand:focus, #mainNav .navbar-brand:hover {
+        #mainNav .navbar-brand:focus,
+        #mainNav .navbar-brand:hover {
             color: #0085A1;
         }
 
-        #mainNav .navbar-nav > li.nav-item > a {
+        #mainNav .navbar-nav>li.nav-item>a {
             padding: 10px 20px;
             color: #343a40;
         }
 
-        #mainNav .navbar-nav > li.nav-item > a:focus, #mainNav .navbar-nav > li.nav-item > a:hover {
+        #mainNav .navbar-nav>li.nav-item>a:focus,
+        #mainNav .navbar-nav>li.nav-item>a:hover {
             color: #0085A1;
         }
 
@@ -318,375 +319,377 @@
             padding: 10px 20px;
             border-radius: 2px;
         }
-
     </style>
 
 </head>
 
 <body>
 
-<!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-    <div class="container">
-        <a class="navbar-brand" href="/">光影天下</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="/">光影天下</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                 aria-label="Toggle navigation">
-            Menu
-            <i class="fas fa-bars"></i>
-        </button>
+                Menu
+                <i class="fas fa-bars"></i>
+            </button>
 
-        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <div class="collapse navbar-collapse" id="navbarResponsive">
 
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="/">首页</a>
-                </li>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">首页</a>
+                    </li>
 
-                <li class="nav-item" id="user">
+                    <li class="nav-item" id="user">
+                        {% if request.cookies.get('name') %}
+                        <!--处于登录状态-->
+                        <!--用户名、退出登录-->
+                        <a id='u_name' class="nav-link" href="/user/{{ request.cookies.get('name') }}">{{
+                            request.cookies.get('name') }}</a>
+                        {% else %}
+                        <!--没有处于登录装填下，才显示登录按钮-->
+                        <a class="nav-link" data-toggle="modal" data-target="#login" href="">登录</a>
+                        {% endif %}
+                    </li>
+
                     {% if request.cookies.get('name') %}
-                    <!--处于登录状态-->
-                    <!--用户名、退出登录-->
-                    <a id='u_name' class="nav-link" href="/user/{{ request.cookies.get('name') }}">{{
-                        request.cookies.get('name') }}</a>
-                    {% else %}
-                    <!--没有处于登录装填下，才显示登录按钮-->
-                    <a class="nav-link" data-toggle="modal" data-target="#login" href="">登录</a>
+                    <li class="nav-item">
+                        <a class="nav-link" id="logout" href="">退出登录</a>
+                    </li>
                     {% endif %}
-                </li>
-
-                {% if request.cookies.get('name') %}
-                <li class="nav-item">
-                    <a class="nav-link" id="logout" href="">退出登录</a>
-                </li>
-                {% endif %}
-            </ul>
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
-<!-- Page Header -->
-<header class="masthead no-margin-bottom" style="background-color: #fff">
-    <div class="overlay"></div>
-    <div class="container">
+    <!-- Page Header -->
+    <header class="masthead no-margin-bottom" style="background-color: #fff">
+        <div class="overlay"></div>
+        <div class="container">
 
 
-        <!--内容-->
-        <div class="row">
-            <div class="col-lg-12 col-md-12 mx-auto detail-body">
-                <div class="row info-line">
-                    <!--大标题-->
-                    <div class="col-lg-12 col-md-12 detail-header">
-                        <h3>{{ house.address }}&nbsp{{ house.rooms }}</h3>
-                        <div class="describe">
-                            <span>为您介绍电影信息</span>
+            <!--内容-->
+            <div class="row">
+                <div class="col-lg-12 col-md-12 mx-auto detail-body">
+                    <div class="row info-line">
+                        <!--大标题-->
+                        <div class="col-lg-12 col-md-12 detail-header">
+                            <h3>{{ house.address }}&nbsp{{ house.rooms }}</h3>
+                            <div class="describe">
+                                <span>为您介绍电影信息</span>
+                            </div>
                         </div>
-                    </div>
-                    <!--左详情-->
-                    <div class="col-lg-8 col-md-8">
-                        <div class="course">
+                        <!--左详情-->
+                        <div class="col-lg-8 col-md-8">
+                            <div class="course">
 
-                            <!--图-->
-                            <div><a href="#"><img class='img-fluid img-box' src="https://images.weserv.nl/?url={{ house.image_url }}" alt=""></a>
-                            </div>
-                            <!--价格-->
-                            <div class="house-info">
-                                <span class="price">观看人数&nbsp{{ house.price }}人</span>
-                                <span class="collection" id="btn-collection"><a><i class="fa fa-heart"
-                                                                                   aria-hidden="true"> 收藏</i></a></span>
-                            </div>
-
-                            <!--基本信息标题-->
-                            <div class="attribute-header">
-                                <h4>基本介绍</h4>
-                            </div>
-                            <!--属性1-->
-                            <div class="row attribute-info">
-                                <div class="col-lg-2 col-md-2">
-                                    <span class="attribute-text">基本信息</span>
+                                <!--图-->
+                                <div><a href="#"><img class='img-fluid img-box'
+                                    src="https://images.weserv.nl/?url={{ house.image_url | urlencode }}"
+                                    alt="{{ house.address }}"
+                                    onerror="this.onerror=null; this.src='/static/img/house-bg1.jpg';"></a>
                                 </div>
-                                <div class="col-lg-4 col-md-4">
-                                    <div>
-                                        <span class="attribute-text">上映年份：</span>
-                                        <span class="info-text">{{ house.rooms }}</span>
-                                    </div>
-                                    <div>
-                                        <span class="attribute-text">电影评分：</span>
-                                        <span class="info-text">{{ house.area }}分</span>
-                                    </div>
-                                    <div>
-                                        <span class="attribute-text">地址：</span>
-                                        <span class="info-text">{{ house.direction }}</span>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6">
-                                    <div>
-                                        <span class="attribute-text">电影名称：</span>
-                                        <span class="info-text">{{ house.address }}</span>
-                                    </div>
-                                    <div>
-                                        <span class="attribute-text">电影导演：</span>
-                                        <span class="info-text">{{ house.rent_type }}</span>
-                                    </div>
-                                    <div>
-                                        <span class="attribute-text">观影热线：</span>
-                                        <span class="info-text">{{ house.phone_num }}</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--属性2-->
-                            <div class="row attribute-info">
-                                <div class="col-lg-2 col-md-2">
-                                    <span class="attribute-text">其它信息</span>
-                                </div>
-                                <div class="col-lg-8 col-md-8">
-                                    <div>
-                                        <span class="attribute-text">语言：</span>
-                                        <span class="info-text">{{ house.traffic | dealNone }}</span>
-                                    </div>
-                                    <div>
-                                        <span class="attribute-text">电影系列：</span>
-                                        <span class="info-text">{{ house.title }}</span>
-                                    </div>
+                                <!--价格-->
+                                <div class="house-info">
+                                    <span class="price">观看人数&nbsp{{ house.price }}人</span>
+                                    <span class="collection" id="btn-collection"><a><i class="fa fa-heart"
+                                                aria-hidden="true"> 收藏</i></a></span>
                                 </div>
 
-                            </div>
+                                <!--基本信息标题-->
+                                <div class="attribute-header">
+                                    <h4>基本介绍</h4>
+                                </div>
+                                <!--属性1-->
+                                <div class="row attribute-info">
+                                    <div class="col-lg-2 col-md-2">
+                                        <span class="attribute-text">基本信息</span>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4">
+                                        <div>
+                                            <span class="attribute-text">上映年份：</span>
+                                            <span class="info-text">{{ house.rooms }}</span>
+                                        </div>
+                                        <div>
+                                            <span class="attribute-text">电影评分：</span>
+                                            <span class="info-text">{{ house.area }}分</span>
+                                        </div>
+                                        <div>
+                                            <span class="attribute-text">地址：</span>
+                                            <span class="info-text">{{ house.direction }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <div>
+                                            <span class="attribute-text">电影名称：</span>
+                                            <span class="info-text">{{ house.address }}</span>
+                                        </div>
+                                        <div>
+                                            <span class="attribute-text">电影导演：</span>
+                                            <span class="info-text">{{ house.rent_type }}</span>
+                                        </div>
+                                        <div>
+                                            <span class="attribute-text">观影热线：</span>
+                                            <span class="info-text">{{ house.phone_num }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--属性2-->
+                                <div class="row attribute-info">
+                                    <div class="col-lg-2 col-md-2">
+                                        <span class="attribute-text">其它信息</span>
+                                    </div>
+                                    <div class="col-lg-8 col-md-8">
+                                        <div>
+                                            <span class="attribute-text">语言：</span>
+                                            <span class="info-text">{{ house.traffic | dealNone }}</span>
+                                        </div>
+                                        <div>
+                                            <span class="attribute-text">电影系列：</span>
+                                            <span class="info-text">{{ house.title }}</span>
+                                        </div>
+                                    </div>
 
-                            <!--房源配套设施-->
-                            <div class="attribute-header">
-                                <h4>电影信息</h4>
+                                </div>
+
+                                <!--房源配套设施-->
+                                <div class="attribute-header">
+                                    <h4>电影信息</h4>
                                     <div>
                                         <span class="attribute-text">电影介绍：</span>
                                         <span class="info-text">{{ house.facilities }}</span>
                                     </div>
-                            </div>
-                            <!--推荐标题-->
-                            <div class="attribute-header">
-                                <h4>电影演员</h4>
-                                <div class="attribute-header-tip-line">
-                                    <span>演员列表</span>
                                 </div>
-                                <div>
-                                    <span class="attribute-text">演员：</span>
-                                    <span class="info-text">{{ house.highlights }}</span>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <!--右边栏-->
-                    <div class="col-lg-4 col-md-4">
-                        <div class="row">
-
-                            <!--line-->
-                            <div class="col-lg-12 col-md-12 mx-auto attribute-header">
-                                <h4><i class="fa fa-align-right" aria-hidden="true"></i>&nbsp&nbsp{{ house.block }}
-                                    观影人数走势</h4>
-                                <div class="attribute-header-tip-line">
-                                    <span>人工智能算法，为您预测观影人数走势</span>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-12 mx-auto browse-record-first-div self-no-padding">
-                                <div id="f_line" class="echarts-tu">
-                                </div>
-                            </div>
-
-                            <!--pie-->
-                            <div class="col-lg-12 col-md-12 mx-auto attribute-header">
-                                <h4><i class="fa fa-align-right" aria-hidden="true"></i>&nbsp&nbsp{{ house.block }}
-                                    年份占比</h4>
-                                <div class="attribute-header-tip-line">
-                                    <span>根据年份占比，了解信息</span>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-12 mx-auto browse-record-first-div self-no-padding">
-                                <div id="pie">
-                                </div>
-                            </div>
-
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!--注册登录-->
-        <div class="row info-line">
-            <div class="col-lg-8 col-md-10 mx-auto">
-                <!-- 注册窗口 -->
-                <div id="register" class="modal fade login_form" tabindex="-1">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-body m-header">
-                                <button class="close" data-dismiss="modal">
-                                    <span>&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-title">
-                                <h1 class="text-center">注册</h1>
-                            </div>
-                            <div class="modal-body">
-                                <form class="form-group" id="registeform" action="/register" method="post">
-                                    <div class="form-group">
-                                        <label for="" class="form-info">用户名</label>
-                                        <input class="form-control" name="username" type="text"
-                                               placeholder="6-15位字母或数字">
+                                <!--推荐标题-->
+                                <div class="attribute-header">
+                                    <h4>电影演员</h4>
+                                    <div class="attribute-header-tip-line">
+                                        <span>演员列表</span>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="" class="form-info">密码</label>
-                                        <input class="form-control" name="password" type="password"
-                                               placeholder="至少6位字母或数字">
+                                    <div>
+                                        <span class="attribute-text">演员：</span>
+                                        <span class="info-text">{{ house.highlights }}</span>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="" class="form-info">再次输入密码</label>
-                                        <input class="form-control" name="confirmPassword" type="password"
-                                               placeholder="至少6位字母或数字">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="" class="form-info">邮箱</label>
-                                        <input class="form-control" name="email" type="email"
-                                               placeholder="例如:123@123.com">
-                                    </div>
-                                    <div class="text-right">
-                                        <button class="btn btn-primary" id='registe-btn'>提交</button>
-                                        <button class="btn btn-danger" data-dismiss="modal">取消</button>
-                                    </div>
-                                    <a href="" data-toggle="modal" data-dismiss="modal" data-target="#login"
-                                       class="switch-info">已有账号？点我登录</a>
-                                </form>
+                                </div>
+
                             </div>
                         </div>
-                    </div>
-                </div>
-                <!-- 登录窗口 -->
-                <div id="login" class="modal fade login_form">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-body m-header">
-                                <button class="close" data-dismiss="modal">
-                                    <span>&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-title">
-                                <h1 class="text-center">登录</h1>
-                            </div>
-                            <div class="modal-body">
-                                <form class="form-group" id="loginform" action="/login" method="post">
-                                    <div class="form-group">
-                                        <label for="" class="form-info">用户名</label>
-                                        <input class="form-control" name="username" type="text" placeholder="">
+                        <!--右边栏-->
+                        <div class="col-lg-4 col-md-4">
+                            <div class="row">
+
+                                <!--line-->
+                                <div class="col-lg-12 col-md-12 mx-auto attribute-header">
+                                    <h4><i class="fa fa-align-right" aria-hidden="true"></i>&nbsp&nbsp{{ house.block }}
+                                        观影人数走势</h4>
+                                    <div class="attribute-header-tip-line">
+                                        <span>人工智能算法，为您预测观影人数走势</span>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="" class="form-info">密码</label>
-                                        <input class="form-control" name="password" type="password" placeholder="">
+                                </div>
+                                <div class="col-lg-12 col-md-12 mx-auto browse-record-first-div self-no-padding">
+                                    <div id="f_line" class="echarts-tu">
                                     </div>
-                                    <div class="text-right">
-                                        <button class="btn btn-primary" id='login-btn'>登录</button>
-                                        <button class="btn btn-danger" data-dismiss="modal">取消</button>
+                                </div>
+
+                                <!--pie-->
+                                <div class="col-lg-12 col-md-12 mx-auto attribute-header">
+                                    <h4><i class="fa fa-align-right" aria-hidden="true"></i>&nbsp&nbsp{{ house.block }}
+                                        年份占比</h4>
+                                    <div class="attribute-header-tip-line">
+                                        <span>根据年份占比，了解信息</span>
                                     </div>
-                                    <a href="" data-toggle="modal" data-dismiss="modal"
-                                       data-target="#register" class="switch-info">还没有账号？点我注册</a>
-                                </form>
+                                </div>
+                                <div class="col-lg-12 col-md-12 mx-auto browse-record-first-div self-no-padding">
+                                    <div id="pie">
+                                    </div>
+                                </div>
+
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-        </div>
-    </div>
-</header>
+            <!--注册登录-->
+            <div class="row info-line">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <!-- 注册窗口 -->
+                    <div id="register" class="modal fade login_form" tabindex="-1">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-body m-header">
+                                    <button class="close" data-dismiss="modal">
+                                        <span>&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-title">
+                                    <h1 class="text-center">注册</h1>
+                                </div>
+                                <div class="modal-body">
+                                    <form class="form-group" id="registeform" action="/register" method="post">
+                                        <div class="form-group">
+                                            <label for="" class="form-info">用户名</label>
+                                            <input class="form-control" name="username" type="text"
+                                                placeholder="6-15位字母或数字">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="" class="form-info">密码</label>
+                                            <input class="form-control" name="password" type="password"
+                                                placeholder="至少6位字母或数字">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="" class="form-info">再次输入密码</label>
+                                            <input class="form-control" name="confirmPassword" type="password"
+                                                placeholder="至少6位字母或数字">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="" class="form-info">邮箱</label>
+                                            <input class="form-control" name="email" type="email"
+                                                placeholder="例如:123@123.com">
+                                        </div>
+                                        <div class="text-right">
+                                            <button class="btn btn-primary" id='registe-btn'>提交</button>
+                                            <button class="btn btn-danger" data-dismiss="modal">取消</button>
+                                        </div>
+                                        <a href="" data-toggle="modal" data-dismiss="modal" data-target="#login"
+                                            class="switch-info">已有账号？点我登录</a>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 登录窗口 -->
+                    <div id="login" class="modal fade login_form">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-body m-header">
+                                    <button class="close" data-dismiss="modal">
+                                        <span>&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-title">
+                                    <h1 class="text-center">登录</h1>
+                                </div>
+                                <div class="modal-body">
+                                    <form class="form-group" id="loginform" action="/login" method="post">
+                                        <div class="form-group">
+                                            <label for="" class="form-info">用户名</label>
+                                            <input class="form-control" name="username" type="text" placeholder="">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="" class="form-info">密码</label>
+                                            <input class="form-control" name="password" type="password" placeholder="">
+                                        </div>
+                                        <div class="text-right">
+                                            <button class="btn btn-primary" id='login-btn'>登录</button>
+                                            <button class="btn btn-danger" data-dismiss="modal">取消</button>
+                                        </div>
+                                        <a href="" data-toggle="modal" data-dismiss="modal" data-target="#register"
+                                            class="switch-info">还没有账号？点我注册</a>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-<hr>
-<!-- Footer -->
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-md-10 mx-auto">
-                <p class="copyright text-muted">Copyright &copy; 光影天下 2024</p>
             </div>
         </div>
-    </div>
-</footer>
+    </header>
 
-<!-- Bootstrap core JavaScript -->
-<script src="/static/vendor/jquery/jquery.min.js"></script>
-<script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>
-<script src="/static/js/login.js"></script>
+    <hr>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <p class="copyright text-muted">Copyright &copy; 光影天下 2024</p>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-
-<!-- Custom scripts for this template -->
-<script src="/static/js/clean-blog.min.js"></script>
-
-<!-- side data -->
-<script type="text/javascript" src="/static/vendor/echarts-stat/ecStat.min.js"></script>
-<script src="/static/js/echarts.min.js"></script>
-<script src="/static/js/infographic.js"></script>
-<script src="/static/js/show_data_pie.js"></script>
-<script src="/static/js/f_data.js"></script>
-<script src="/static/js/show_column_data.js"></script>
-<script src="/static/js/show_broken_line_data.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script src="/static/vendor/jquery/jquery.min.js"></script>
+    <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>
+    <script src="/static/js/login.js"></script>
 
 
-<script>
-    $('document').ready(function () {
-        // 获取scatter
-        $.ajax({
-            url: "/get/scatterdata/{{ house.block }}",
-            type: 'get',
-            dataType: 'json',
-            success: function (data) {
-                getdata1(data['data']);
+    <!-- Custom scripts for this template -->
+    <script src="/static/js/clean-blog.min.js"></script>
 
-            }
-        });
-        // 获取pie
-        $.ajax({
-            url: "/get/piedata/{{ house.block }}",
-            type: 'get',
-            dataType: 'json',
-            success: function (data) {
-                pie_chart(data['data'])
-            }
-        });
-        // 获取column
-        $.ajax({
-            url: "/get/columndata/{{ house.block }}",
-            type: 'get',
-            dataType: 'json',
-            success: function (data) {
-                column_chart(data['data'])
-            }
-        });
+    <!-- side data -->
+    <script type="text/javascript" src="/static/vendor/echarts-stat/ecStat.min.js"></script>
+    <script src="/static/js/echarts.min.js"></script>
+    <script src="/static/js/infographic.js"></script>
+    <script src="/static/js/show_data_pie.js"></script>
+    <script src="/static/js/f_data.js"></script>
+    <script src="/static/js/show_column_data.js"></script>
+    <script src="/static/js/show_broken_line_data.js"></script>
 
-// 获取broken_line
-$.ajax({
-    url: "/get/brokenlinedata/{{ house.block }}",
-    type: 'get',
-    dataType: 'json',
-    success: function (data) {
-        broken_line_chart(data['data'])
-    }
-});
-        // 点击收藏
-        $("#btn-collection").on("click", function () {
+
+    <script>
+        $('document').ready(function () {
+            // 获取scatter
             $.ajax({
-                url: "/add/collection/{{ house.id }}",
+                url: "/get/scatterdata/{{ house.block }}",
                 type: 'get',
                 dataType: 'json',
                 success: function (data) {
-                    if (data['valid'] == '0') {
-                        alert(data['msg'])
-                    } else {
-                        alert(data['msg'])
-                    }
+                    getdata1(data['data']);
+
                 }
             });
+            // 获取pie
+            $.ajax({
+                url: "/get/piedata/{{ house.block }}",
+                type: 'get',
+                dataType: 'json',
+                success: function (data) {
+                    pie_chart(data['data'])
+                }
+            });
+            // 获取column
+            $.ajax({
+                url: "/get/columndata/{{ house.block }}",
+                type: 'get',
+                dataType: 'json',
+                success: function (data) {
+                    column_chart(data['data'])
+                }
+            });
+
+            // 获取broken_line
+            $.ajax({
+                url: "/get/brokenlinedata/{{ house.block }}",
+                type: 'get',
+                dataType: 'json',
+                success: function (data) {
+                    broken_line_chart(data['data'])
+                }
+            });
+            // 点击收藏
+            $("#btn-collection").on("click", function () {
+                $.ajax({
+                    url: "/add/collection/{{ house.id }}",
+                    type: 'get',
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data['valid'] == '0') {
+                            alert(data['msg'])
+                        } else {
+                            alert(data['msg'])
+                        }
+                    }
+                });
+            })
         })
-    })
-</script>
+    </script>
 
 </body>
 

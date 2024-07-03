@@ -227,7 +227,7 @@
 </nav>
 
 <!-- Page Header -->
-<header class="masthead" style="background-image: url('/static/img/home-bg.jpg')">
+<header class="masthead" style="background-image: url('/static/img/house-bg1.jpg')">
     <div class="overlay"></div>
     <div class="container">
         <div class="row">
@@ -294,8 +294,10 @@
         {% for house in house_new_list %}
         <div class="col-lg-4">
             <div class="course">
-                <div><a href="/house/{{ house.id }}"><img class='img-fluid img-box' src="https://images.weserv.nl/?url={{ house.image_url }}"
-                                                          alt=""></a></div>
+                <div><a href="/house/{{ house.id }}"><img class='img-fluid img-box'
+                    src="https://images.weserv.nl/?url={{ house.image_url | urlencode }}"
+                    alt="{{ house.address }}"
+                    onerror="this.onerror=null; this.src='/static/img/house-bg1.jpg';"></a></div>
                 <div class="course-info">
                     <span>{{ house.address }}</span>
 
@@ -326,8 +328,10 @@
         {% for house in house_hot_list %}
         <div class="col-lg-3">
             <div class="course">
-                <div><a href="/house/{{ house.id }}"><img class='img-fluid img-box' src="https://images.weserv.nl/?url={{ house.image_url }}"
-                                                 alt=""></a></div>
+                <div><a href="/house/{{ house.id }}"><img class='img-fluid img-box'
+                    src="https://images.weserv.nl/?url={{ house.image_url | urlencode }}"
+                    alt="{{ house.address }}"
+                    onerror="this.onerror=null; this.src='/static/img/house-bg1.jpg';"></a></div>
                 <div class="course-info">
                     <span>{{ house.address }}</span>
                 </div>
