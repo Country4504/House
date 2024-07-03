@@ -94,9 +94,6 @@ def return_pie_data(block):
     return jsonify({'data': data})
 
 
-
-
-
 # 实现房价预测功能
 @detail_page.route('/get/scatterdata/<block>')
 def return_scatter_data(block):
@@ -126,9 +123,6 @@ def return_scatter_data(block):
     # 将预测的数据添加入data中
     data.append([predict_value, p_outcome])
     return jsonify({'data': {'data-predict': data, 'date_li': date_li}})
-
-
-
 
 
 # 自定义过滤器，用于处理交通条件有无数据的情况
